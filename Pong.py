@@ -11,6 +11,7 @@ running = True
 jugador1 = pygame.Vector2(20,screen.get_height()/2)
 jugador2 = pygame.Vector2(780,screen.get_height()/2)
 pelota = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+vel_pelota = pygame.Vector2(4, 4)
 
 
 #CREACION DE LA ALTURA Y ANCHURA DE LOS DOS JUGADORES Y SU VELOCIDAD
@@ -21,7 +22,7 @@ velocidad = 6
 #POSICIONAMIENTO DE LOS OBJETOS
 pala1 = pygame.Rect(jugador1.x,jugador1.y, ANCHO_PALA,ALTO_PALA)
 pala2 = pygame.Rect(jugador2.x,jugador2.y, ANCHO_PALA, ALTO_PALA)
-vel_pelota = pygame.Vector2(4, 4)
+pygame.draw.circle(screen,(255,255,255),(int(pelota.x), int(pelota.y)),10)
 
 #BUCLE DE FUNCIONAMIENTO
 while running:
@@ -34,7 +35,7 @@ while running:
     #DIBUJO DE LOS OBJETOS
     pygame.draw.rect(screen,"white",pala1)
     pygame.draw.rect(screen,"white", pala2)
-    pygame.draw.circle(screen,(255,255,255),(int(pelota.x), int(pelota.y)),10)
+    
     
     #MOVIMIENTOS JUGADOR 1
     teclas = pygame.key.get_pressed()
@@ -46,15 +47,14 @@ while running:
     #MOVIMIENTOS JUGADOR 2      
     if pelota.y < jugador2.y and pala2.top > 0:
         jugador2 -=velocidad
-    if pelota.y > jugador2.y and pala2.bottom <600:
+    if pelota.y > jugador2.y and pala2.bottom < 600:
         jugador2 += velocidad
      
     #ACTUALIZACION DE JUGADORES       
     pala1.center = jugador1
     pala2.center = jugador2
     
-    #MOVIMIENTO DE LA PELOTA
-    pelota+= vel_pelota
+   
     
     pygame.display.flip()
     
