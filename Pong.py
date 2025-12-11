@@ -46,7 +46,7 @@ while running:
     #DIBUJO DE LOS OBJETOS
     j1 =  pygame.draw.rect(screen,"blue",pala1)
     j2 = pygame.draw.rect(screen,"yellow", pala2)
-    p = pygame.draw.circle(screen,("green"),(int(pelota.x), int(pelota.y)),10)
+    p = pygame.draw.circle(screen,("green"),((pelota.x), (pelota.y)),10)
    
    #MOVIMIMENTO DE LA PELOTA 
         #REBOTE HORIZONTAL
