@@ -5,7 +5,7 @@ from pygame.locals import*
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 running = True
-
+font = pygame.font.Font(None, 36)
 
 #CREACION DE LOS OBJETOS
 jugador1 = pygame.Vector2(20,screen.get_height()/2)
@@ -23,7 +23,27 @@ radio_pelota = 10
 
 pala1 = pygame.Rect(jugador1.x,jugador1.y, ANCHO_PALA,ALTO_PALA)
 pala2 = pygame.Rect(jugador2.x,jugador2.y, ANCHO_PALA, ALTO_PALA)
-rect_pelota = pygame.Rect(int(pelota.x - radio_pelota),int(pelota.y - radio_pelota),radio_pelota * 2,radio_pelota * 2)
+rect_pelota = pygame.Rect((pelota.x - radio_pelota),(pelota.y - radio_pelota),radio_pelota * 2,radio_pelota * 2)
+
+
+#CREACION DEL FONDO
+
+suavizado = True
+color =(255,255,255)
+superficie_texto1 = font.render("Puntos Jugador1: 0", suavizado , color)
+superficie_texto2 = font.render("Puntos Jugador2: 0",suavizado, color)
+
+# Obtener el rectángulo del texto
+texto_rect1 = superficie_texto1.get_rect()
+texto_rect2 = superficie_texto2.get_rect()
+
+texto_rect1.centerx = 800 // 4      
+texto_rect2.centerx = 800 * 3 // 4  
+
+# Posición vertical
+texto_rect1.y = 20
+texto_rect2.y = 20
+
 
 #REINICIO
 def Reinicio():
@@ -32,7 +52,7 @@ def Reinicio():
         
         pelota.x = 400
         pelota.y = 300
-
+        
 
 #BUCLE DE FUNCIONAMIENTO
 while running:
@@ -42,11 +62,13 @@ while running:
         
                     
     screen.fill("black")
+    screen.blit(superficie_texto1,texto_rect1)
+    screen.blit(superficie_texto2,texto_rect2)
     
     #DIBUJO DE LOS OBJETOS
     j1 =  pygame.draw.rect(screen,"blue",pala1)
     j2 = pygame.draw.rect(screen,"yellow", pala2)
-    p = pygame.draw.circle(screen,("green"),((pelota.x), (pelota.y)),10)
+    p = pygame.draw.circle(screen,("white"),((pelota.x), (pelota.y)),10)
    
    #MOVIMIMENTO DE LA PELOTA 
         #REBOTE HORIZONTAL
@@ -89,12 +111,8 @@ while running:
     pala2.center = jugador2
     
     
-
-
-    
     pygame.display.flip()
     
     time.sleep(1/60)
     
 pygame.quit()
-    
