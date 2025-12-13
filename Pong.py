@@ -15,7 +15,7 @@ vel_pelota = pygame.Vector2(4, 4)
 
 
 #CREACION DE LA ALTURA Y ANCHURA DE LOS DOS JUGADORES Y SU VELOCIDAD
-ANCHO_PALA= 20
+ANCHO_PALA = 20
 ALTO_PALA = 120
 velocidad = 6
 radio_pelota = 10 
@@ -26,8 +26,7 @@ pala2 = pygame.Rect(jugador2.x,jugador2.y, ANCHO_PALA, ALTO_PALA)
 rect_pelota = pygame.Rect((pelota.x - radio_pelota),(pelota.y - radio_pelota),radio_pelota * 2,radio_pelota * 2)
 
 
-#CREACION DEL FONDO
-
+#CREACION DEL MARCADOR 
 suavizado = True
 color =(255,255,255)
 superficie_texto1 = font.render("Puntos Jugador1: 0", suavizado , color)
