@@ -15,18 +15,21 @@ clock = pygame.time.Clock()
 tiempo = 0
 velocidad_movimiento = 0.2
 
+#METODO COMER MANZANA
 
-def Comer_Manzana(manzana, serpiente):
-    
-    serpiente = pygame.Rect(Serpiente.cuerpo[0], Serpiente.cuerpo[0], Serpiente.tamaño , Serpiente.tamaño)
-    manzana = pygame.Rect(Manzana.posicion, Manzana.posicion, Manzana.tamaño , Manzana.tamaño)
-    
-    if serpiente.colliderect(manzana):
-        
-        Serpiente.crecer = True  
-        Manzana.moverRandom()
+def Comer_Manzana(serpiente, manzana):
+    cabeza_serpiente = serpiente.cuerpo[0]  
 
+    manzana_rect = pygame.Rect(
+        manzana.posicion.x,
+        manzana.posicion.y,
+        manzana.tamaño,
+        manzana.tamaño
+    )
 
+    if cabeza_serpiente.colliderect(manzana_rect):
+            serpiente.crecer = True
+            manzana.moverRandom()
 
 
 #BUCLE DE INICIO Y LLAMADAS DE METODOS DE LAS DIFERENTES CLASES 

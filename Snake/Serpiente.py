@@ -47,6 +47,15 @@ class Serpiente:
         for i in range (len(self.cuerpo)-1,0,-1):
             self.cuerpo[i] = self.cuerpo[i-1].copy()
             
+            
+        if self.crecer:
+            self.cuerpo.append(self.cuerpo[-1].copy())
+            self.crecer = False 
+            
+           
+            
+        
+            
     
    
             
