@@ -46,11 +46,23 @@ class Serpiente:
         
         for i in range (len(self.cuerpo)-1,0,-1):
             self.cuerpo[i] = self.cuerpo[i-1].copy()
-            
-            
+             
         if self.crecer:
-            self.cuerpo.append(self.cuerpo[-1].copy())
-            self.crecer = False 
+            for i in range(3):
+                self.cuerpo.append(self.cuerpo[-1].copy())
+                self.crecer = False
+    
+    
+    
+    # def Colision_Pared(self):
+    #     cabeza = self.cuerpo[0]
+    #     if cabeza.x < 0 or cabeza.x + cabeza.width > 800:
+    #       self.direccion.x = 0
+    #       self.direccion.y = 0
+          
+    #     if cabeza.y < 0 or cabeza.y + cabeza.height >600:
+    #       self.direccion.y = 0
+    #       self.direccion.x = 0
             
            
             
