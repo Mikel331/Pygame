@@ -4,7 +4,6 @@ import random
 #CLASE DE MANZANA
 class Manzana:
     
-    
     #VARIABLES DE MANZANA
     def __init__(self,tamaño ,ancho_ventana,alto_ventana):
         self.posicion = pygame.Vector2(200, 200)
@@ -29,8 +28,4 @@ class Manzana:
         )
 
      
-        
-        
-        
-        
-        
+              

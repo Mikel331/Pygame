@@ -1,5 +1,6 @@
 import pygame 
 import time
+import random
 from pygame.locals import*
 
 pygame.init()
@@ -19,6 +20,9 @@ ANCHO_PALA = 20
 ALTO_PALA = 120
 velocidad = 6
 radio_pelota = 10 
+puntos_j1 = 0
+puntos_j2 = 0
+
 
 
 pala1 = pygame.Rect(jugador1.x,jugador1.y, ANCHO_PALA,ALTO_PALA)
@@ -26,31 +30,19 @@ pala2 = pygame.Rect(jugador2.x,jugador2.y, ANCHO_PALA, ALTO_PALA)
 rect_pelota = pygame.Rect((pelota.x - radio_pelota),(pelota.y - radio_pelota),radio_pelota * 2,radio_pelota * 2)
 
 
-#CREACION DEL MARCADOR 
-suavizado = True
-color =(255,255,255)
-superficie_texto1 = font.render("Puntos Jugador1: 0", suavizado , color)
-superficie_texto2 = font.render("Puntos Jugador2: 0",suavizado, color)
-
-# Obtener el rectángulo del texto
-texto_rect1 = superficie_texto1.get_rect()
-texto_rect2 = superficie_texto2.get_rect()
-
-texto_rect1.centerx = 800 // 4      
-texto_rect2.centerx = 800 * 3 // 4  
-
-# Posición vertical
-texto_rect1.y = 20
-texto_rect2.y = 20
-
 
 #REINICIO
 def Reinicio():
-    global pelota, vel_pelota
-    if pelota.x - radio_pelota <= 0 or pelota.x + radio_pelota >= 800:
-        
+    global pelota, vel_pelota, puntos_j1, puntos_j2
+    if pelota.x - radio_pelota <= 0:       
+        puntos_j2 += 1
         pelota.x = 400
         pelota.y = 300
+    elif pelota.x + radio_pelota >= 800:  
+        puntos_j1 += 1
+        pelota.x = 400
+        pelota.y = 300
+
         
 
 #BUCLE DE FUNCIONAMIENTO
@@ -59,6 +51,22 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         
+    #CREACION DEL MARCADOR 
+    suavizado = True
+    color =(255,255,255)
+    superficie_texto1 = font.render(f"Jugador1: {puntos_j1}", suavizado , color)
+    superficie_texto2 = font.render(f"Jugador2: {puntos_j2}",suavizado, color)
+   
+    # Obtener el rectángulo del texto
+    texto_rect1 = superficie_texto1.get_rect()
+    texto_rect2 = superficie_texto2.get_rect()
+
+    texto_rect1.centerx = 800 // 4      
+    texto_rect2.centerx = 800 * 3 // 4  
+
+    # Posición vertical
+    texto_rect1.y = 20
+    texto_rect2.y = 20
                     
     screen.fill("black")
     screen.blit(superficie_texto1,texto_rect1)
@@ -74,9 +82,13 @@ while running:
     if pelota.x + radio_pelota == 800 or pelota.x - radio_pelota == 0:
         vel_pelota.x *= -1
 
+       
+
         #REBOTE VERTICAL 
     if pelota.y + radio_pelota >= 600 or pelota.y - radio_pelota <= 0:
         vel_pelota.y *= -1
+       
+      
 
     pelota += vel_pelota
     
