@@ -9,7 +9,7 @@ class Serpiente:
        self.tamaño = tamaño
        self.color = ("green")
        self.cuerpo = [pygame.Rect(100, 100,tamaño,tamaño),  
-                      pygame.Rect(100,100,tamaño,tamaño)]
+                      pygame.Rect(80,100,tamaño,tamaño)]
        self.direccion = pygame.Vector2(tamaño,0)
        self.crecer = False
        self.velocidad = 3
@@ -76,7 +76,7 @@ class Serpiente:
             cabeza.y = 300
             self.puntos = 0
             self.cuerpo = [pygame.Rect(100, 100,self.tamaño,self.tamaño), 
-                           pygame.Rect(100 , 100,self.tamaño,self.tamaño)]
+                           pygame.Rect(80 , 100,self.tamaño,self.tamaño)]
            
            
         if cabeza.y + cabeza.height >= 600 or cabeza.y <= 0:
@@ -86,7 +86,11 @@ class Serpiente:
             cabeza.y = 300
             self.puntos = 0
             self.cuerpo = [pygame.Rect(100, 100,self.tamaño,self.tamaño), 
-                           pygame.Rect(100 ,100,self.tamaño,self.tamaño)]
+                           pygame.Rect(80 ,100,self.tamaño,self.tamaño)]
+            
+    
+        
+        
             
             
             

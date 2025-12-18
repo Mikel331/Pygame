@@ -74,6 +74,7 @@ while running:
     if serpiente.viva:
         serpiente.Movimiento_Serpiente()
         serpiente.Colision_Pared()
+        
        
         
     else:
