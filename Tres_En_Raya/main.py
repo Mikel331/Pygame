@@ -3,11 +3,12 @@ from Tablero import Tablero
 from Jugador import Jugador
 pygame.init()
 ventana = pygame.display.set_mode((800,600))
+pygame.display.set_caption("Tres en Raya")
 running= True
 
 jugador1 = Jugador(pygame.Vector2(200,200),"O")
 jugador2 = Jugador(pygame.Rect(300,200,80,80), "X")
-
+tablero = Tablero()
 
 
 while running:
@@ -17,8 +18,7 @@ while running:
             
             
     ventana.fill("black")
-    jugador1.dibujo_Figuras(ventana)
-    jugador2.dibujo_Figuras(ventana)
+    tablero.dibujar(ventana)
     
     
     
